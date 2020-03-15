@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="End" type="Node"]
+
+[node name="EndScreen" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="EndScreen"]
+margin_right = 1024.0
+margin_bottom = 608.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="EndScreen"]
+margin_left = 480.0
+margin_top = 288.0
+margin_right = 556.0
+margin_bottom = 302.0
+text = "GAME OVER"
+align = 1
+valign = 1

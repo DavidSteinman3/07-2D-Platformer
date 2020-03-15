@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/PNG/Players/128x256/Green/alienGreen_jump.png" type="Texture" id=2]
+[ext_resource path="res://Assets/PNG/Players/128x256/Green/alienGreen_walk1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/PNG/Players/128x256/Green/alienGreen_walk2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/PNG/Players/128x256/Green/alienGreen_stand.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Data.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 14.1754, -44.5512 )
+scale = Vector2( 0.77851, 0.651944 )
+frames = SubResource( 1 )
+animation = "Idle"
+speed_scale = 2.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 14.1754, -44.5512 )
+scale = Vector2( 0.77851, 0.651944 )
+polygon = PoolVector2Array( 14, -21.8, 22, -20.8, 22, -19.2, 36, -12.2, 36, -10.9, 46, -1.9, 46, 0.5, 55, 13.4, 55, 17, 58.3, 40, 56.8, 40, 54.7, 54, 53.4, 54, 49.4, 64, 47.9, 64, 43, 69.7, 43, 70.6, 50, 85.6, 50, 103, 48, 103, 44, 108, 37, 108, 37, 105.9, 35, 104.3, 35, 106.1, 31.7, 128, 10.2, 128, 9.2, 118, -10.4, 118, -13.5, 116.8, -17.6, 128, -40, 128, -40, 122.9, -36.7, 93.3, -42.7, 106, -46.7, 106, -52, 107.8, -52, 105, -57, 101, -57, 92.6, -51.4, 78, -49.9, 78, -42, 69.3, -42, 68.6, -53, 51.6, -53, 47, -55.2, 20, -53.4, 20, -46.4, 1, -44.9, 1, -32.9, -13, -30.5, -13, -20.6, -20, -17.1, -20, -12, -21.5, -12, -23, 14, -23 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
+position = Vector2( 24, 55 )
+cast_to = Vector2( 0, 16 )
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
+position = Vector2( -24, 55 )
+cast_to = Vector2( 0, 16 )
+collision_mask = 3
+
+[node name="Data" type="Node2D" parent="."]
+script = ExtResource( 6 )
